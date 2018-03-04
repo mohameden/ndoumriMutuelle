@@ -1,0 +1,42 @@
+
+<div *ngIf="cotiz">
+    <h2><span jhiTranslate="ndoumriMutuelleApp.cotiz.detail.title">Cotiz</span> {{cotiz.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="ndoumriMutuelleApp.cotiz.amount">Amount</span></dt>
+        <dd>
+            <span>{{cotiz.amount}}</span>
+        </dd>
+        <dt><span jhiTranslate="ndoumriMutuelleApp.cotiz.currency">Currency</span></dt>
+        <dd>
+            <span>{{cotiz.currency}}</span>
+        </dd>
+        <dt><span jhiTranslate="ndoumriMutuelleApp.cotiz.paymentDate">Payment Date</span></dt>
+        <dd>
+            <span>{{cotiz.paymentDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="ndoumriMutuelleApp.cotiz.dueDate">Due Date</span></dt>
+        <dd>
+            <span>{{cotiz.dueDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="ndoumriMutuelleApp.cotiz.paymentMode">Payment Mode</span></dt>
+        <dd>
+            <span jhiTranslate="{{'ndoumriMutuelleApp.PaymentMode.' + cotiz.paymentMode}}">{{cotiz.paymentMode}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'cotiz/'+ cotiz.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

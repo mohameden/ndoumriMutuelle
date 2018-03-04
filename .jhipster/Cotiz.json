@@ -1,0 +1,40 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "engagement",
+            "otherEntityName": "engagement",
+            "otherEntityRelationshipName": "cotiz"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "amount",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "currency",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "paymentDate",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "dueDate",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "paymentMode",
+            "fieldType": "PaymentMode",
+            "fieldValues": "CASH,OTHER"
+        }
+    ],
+    "changelogDate": "20180304234336",
+    "entityTableName": "cotiz",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false
+}

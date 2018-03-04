@@ -42,6 +42,9 @@ public class CacheConfiguration {
             cm.createCache(mr.ndoumri.mutuelle.domain.User.class.getName(), jcacheConfiguration);
             cm.createCache(mr.ndoumri.mutuelle.domain.Authority.class.getName(), jcacheConfiguration);
             cm.createCache(mr.ndoumri.mutuelle.domain.User.class.getName() + ".authorities", jcacheConfiguration);
+            cm.createCache(mr.ndoumri.mutuelle.domain.Cotiz.class.getName(), jcacheConfiguration);
+            cm.createCache(mr.ndoumri.mutuelle.domain.Cotiz.class.getName() + ".engagements", jcacheConfiguration);
+            cm.createCache(mr.ndoumri.mutuelle.domain.Engagement.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

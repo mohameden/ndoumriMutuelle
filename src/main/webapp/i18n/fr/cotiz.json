@@ -1,0 +1,27 @@
+
+{
+    "ndoumriMutuelleApp": {
+        "cotiz" : {
+            "home": {
+                "title": "Cotizs",
+                "createLabel": "Créer un nouveau Cotiz",
+                "createOrEditLabel": "Créer ou éditer un Cotiz"
+            },
+            "created": "Un nouveau Cotiz a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Cotiz avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Cotiz avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Cotiz {{ id }} ?"
+            },
+            "detail": {
+                "title": "Cotiz"
+            },
+            "amount": "Amount",
+            "currency": "Currency",
+            "paymentDate": "Payment Date",
+            "dueDate": "Due Date",
+            "paymentMode": "Payment Mode",
+            "engagement": "Engagement"
+        }
+    }
+}
