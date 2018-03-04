@@ -1,0 +1,28 @@
+entity Cotiz {
+	amount Double,
+    currency String,
+    paymentDate Instant,
+    dueDate Instant,
+	paymentMode PaymentMode
+}
+
+entity Engagement {
+	name String,
+    expectedAmount Double,
+  	startDate Instant,
+    endDate Instant,
+    comment String
+}
+
+enum PaymentMode {
+    CASH, OTHER
+}
+relationship OneToMany {
+	Cotiz{Engagement} to Engagement
+}
+
+paginate Cotiz with pagination
+
+dto * with mapstruct
+
+service all with serviceImpl
