@@ -1,0 +1,74 @@
+<div>
+    <h2>
+        <span jhiTranslate="ndoumriMutuelleApp.cotiz.home.title">Cotizs</span>
+        <button class="btn btn-primary float-right jh-create-entity create-cotiz-my-suffix" [routerLink]="['/', { outlets: { popup: ['cotiz-my-suffix-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="ndoumriMutuelleApp.cotiz.home.createLabel">
+            Create new Cotiz
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="cotizs">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="amount"><span jhiTranslate="ndoumriMutuelleApp.cotiz.amount">Amount</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="currency"><span jhiTranslate="ndoumriMutuelleApp.cotiz.currency">Currency</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="paymentDate"><span jhiTranslate="ndoumriMutuelleApp.cotiz.paymentDate">Payment Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dueDate"><span jhiTranslate="ndoumriMutuelleApp.cotiz.dueDate">Due Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="paymentMode"><span jhiTranslate="ndoumriMutuelleApp.cotiz.paymentMode">Payment Mode</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let cotiz of cotizs ;trackBy: trackId">
+                <td><a [routerLink]="['../cotiz-my-suffix', cotiz.id ]">{{cotiz.id}}</a></td>
+                <td>{{cotiz.amount}}</td>
+                <td>{{cotiz.currency}}</td>
+                <td>{{cotiz.paymentDate | date:'medium'}}</td>
+                <td>{{cotiz.dueDate | date:'medium'}}</td>
+                <td jhiTranslate="{{'ndoumriMutuelleApp.PaymentMode.' + cotiz.paymentMode}}">{{cotiz.paymentMode}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../cotiz-my-suffix', cotiz.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'cotiz-my-suffix/'+ cotiz.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'cotiz-my-suffix/'+ cotiz.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="cotizs && cotizs.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

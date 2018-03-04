@@ -1,0 +1,27 @@
+
+{
+    "ndoumriMutuelleApp": {
+        "engagement" : {
+            "home": {
+                "title": "Engagements",
+                "createLabel": "Créer un nouveau Engagement",
+                "createOrEditLabel": "Créer ou éditer un Engagement"
+            },
+            "created": "Un nouveau Engagement a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Engagement avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Engagement avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Engagement {{ id }} ?"
+            },
+            "detail": {
+                "title": "Engagement"
+            },
+            "name": "Name",
+            "expectedAmount": "Expected Amount",
+            "startDate": "Start Date",
+            "endDate": "End Date",
+            "comment": "Comment",
+            "cotiz": "Cotiz"
+        }
+    }
+}
