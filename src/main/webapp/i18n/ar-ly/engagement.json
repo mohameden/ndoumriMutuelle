@@ -3,26 +3,26 @@
     "ndoumriMutuelleApp": {
         "engagement" : {
             "home": {
-                "title": "Engagements",
-                "createLabel": "Create a new Engagement",
-                "createOrEditLabel": "Create or edit a Engagement"
+                "title": "اللوحات",
+                "createLabel": "إنشاء لوحة جديدة",
+                "createOrEditLabel": "إنشاء أو تعديل لوحة"
             },
-            "created": "A new Engagement is created with identifier {{ param }}",
-            "updated": "A Engagement is updated with identifier {{ param }}",
-            "deleted": "A Engagement is deleted with identifier {{ param }}",
+            "created": "تم إنشاء اللوحة",
+            "updated": "تم تعديل اللوحة",
+            "deleted": "تم حذف اللوحة",
             "delete": {
-                "question": "Are you sure you want to delete Engagement {{ id }}?"
+                "question": "تأكيد حذف اللوحة؟"
             },
             "detail": {
-                "title": "Engagement"
+                "title": "لوحة"
             },
-            "name": "Name",
-            "expectedAmount": "Expected Amount",
-            "startDate": "Start Date",
-            "endDate": "End Date",
-            "comment": "Comment",
-            "cotiz": "Cotiz",
-            "owner": "Owner"
+            "name": "العنوان",
+            "expectedAmount": "المبلغ المرتقب",
+            "startDate": "تاريخ البدأ",
+            "endDate": "تاريخ الانتهاء",
+            "comment": "ملاحظات",
+            "cotiz": "اشتراكات",
+            "owner": "مدير اللوحة"
         }
     }
 }

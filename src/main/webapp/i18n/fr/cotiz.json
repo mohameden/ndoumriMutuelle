@@ -3,26 +3,26 @@
     "ndoumriMutuelleApp": {
         "cotiz" : {
             "home": {
-                "title": "Cotizs",
-                "createLabel": "Créer un nouveau Cotiz",
-                "createOrEditLabel": "Créer ou éditer un Cotiz"
+                "title": "Cotisations",
+                "createLabel": "Cotiser",
+                "createOrEditLabel": "Créer ou éditer une cotisation"
             },
-            "created": "Un nouveau Cotiz a été créé avec l'identifiant {{ param }}",
-            "updated": "Le Cotiz avec l'identifiant {{ param }} a été mis à jour",
-            "deleted": "Le Cotiz avec l'identifiant {{ param }} a été supprimé",
+            "created": "Une nouvelle cotisation a été créée avec le code {{ param }}",
+            "updated": "La cotisation avec le code {{ param }} a été mise à jour",
+            "deleted": "La cotisation avec le code {{ param }} a été supprimée",
             "delete": {
-                "question": "Etes-vous certain de vouloir supprimer le Cotiz {{ id }} ?"
+                "question": "Etes-vous certain de vouloir supprimer la cotisation {{ id }} ?"
             },
             "detail": {
-                "title": "Cotiz"
+                "title": "Cotisation"
             },
-            "amount": "Amount",
-            "currency": "Currency",
-            "paymentDate": "Payment Date",
-            "dueDate": "Due Date",
-            "paymentMode": "Payment Mode",
-            "comment": "Comment",
-            "user": "User",
+            "amount": "Montant",
+            "currency": "Devise",
+            "paymentDate": "Date de payment",
+            "dueDate": "Date d'échéance",
+            "paymentMode": "Mode de payment",
+            "comment": "Commentaire",
+            "user": "Adhérent",
             "engagement": "Engagement"
         }
     }

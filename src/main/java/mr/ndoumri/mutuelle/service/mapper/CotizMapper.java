@@ -12,7 +12,9 @@ import org.mapstruct.*;
 public interface CotizMapper extends EntityMapper<CotizDTO, Cotiz> {
 
     @Mapping(source = "user.id", target = "userId")
+    @Mapping(source = "user.login", target = "userLogin")
     @Mapping(source = "engagement.id", target = "engagementId")
+    @Mapping(source = "engagement.name", target = "engagementName")
     CotizDTO toDto(Cotiz cotiz);
 
     @Mapping(source = "userId", target = "user")

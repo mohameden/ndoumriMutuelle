@@ -3,8 +3,6 @@ package mr.ndoumri.mutuelle.service.dto;
 
 import java.time.Instant;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
 import mr.ndoumri.mutuelle.domain.enumeration.PaymentMode;
 
@@ -13,7 +11,9 @@ import mr.ndoumri.mutuelle.domain.enumeration.PaymentMode;
  */
 public class CotizDTO implements Serializable {
 
-    private Long id;
+	private static final long serialVersionUID = -3309247317644162344L;
+
+	private Long id;
 
     private Double amount;
 
@@ -30,6 +30,10 @@ public class CotizDTO implements Serializable {
     private Long userId;
 
     private Long engagementId;
+    
+    private String userLogin;
+    
+    private String engagementName;
 
     public Long getId() {
         return id;
@@ -103,7 +107,23 @@ public class CotizDTO implements Serializable {
         this.engagementId = engagementId;
     }
 
-    @Override
+    public String getUserLogin() {
+		return userLogin;
+	}
+
+	public void setUserLogin(String userLogin) {
+		this.userLogin = userLogin;
+	}
+
+	public String getEngagementName() {
+		return engagementName;
+	}
+
+	public void setEngagementName(String engagementName) {
+		this.engagementName = engagementName;
+	}
+
+	@Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;

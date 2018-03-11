@@ -1,6 +1,8 @@
 package mr.ndoumri.mutuelle.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+
+import mr.ndoumri.mutuelle.security.AuthoritiesConstants;
 import mr.ndoumri.mutuelle.service.EngagementService;
 import mr.ndoumri.mutuelle.web.rest.errors.BadRequestAlertException;
 import mr.ndoumri.mutuelle.web.rest.util.HeaderUtil;
@@ -9,6 +11,7 @@ import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
@@ -42,6 +45,7 @@ public class EngagementResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect
      */
     @PostMapping("/engagements")
+    @Secured(AuthoritiesConstants.ADMIN)
     @Timed
     public ResponseEntity<EngagementDTO> createEngagement(@RequestBody EngagementDTO engagementDTO) throws URISyntaxException {
         log.debug("REST request to save Engagement : {}", engagementDTO);
@@ -64,6 +68,7 @@ public class EngagementResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect
      */
     @PutMapping("/engagements")
+    @Secured(AuthoritiesConstants.ADMIN)
     @Timed
     public ResponseEntity<EngagementDTO> updateEngagement(@RequestBody EngagementDTO engagementDTO) throws URISyntaxException {
         log.debug("REST request to update Engagement : {}", engagementDTO);
@@ -109,6 +114,7 @@ public class EngagementResource {
      * @return the ResponseEntity with status 200 (OK)
      */
     @DeleteMapping("/engagements/{id}")
+    @Secured(AuthoritiesConstants.ADMIN)
     @Timed
     public ResponseEntity<Void> deleteEngagement(@PathVariable Long id) {
         log.debug("REST request to delete Engagement : {}", id);

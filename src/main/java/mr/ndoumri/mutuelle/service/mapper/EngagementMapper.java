@@ -12,6 +12,7 @@ import org.mapstruct.*;
 public interface EngagementMapper extends EntityMapper<EngagementDTO, Engagement> {
 
     @Mapping(source = "owner.id", target = "ownerId")
+    @Mapping(source = "owner.login", target = "ownerLogin")
     EngagementDTO toDto(Engagement engagement);
 
     @Mapping(target = "cotizs", ignore = true)

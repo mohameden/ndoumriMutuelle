@@ -6,9 +6,9 @@
             "home": "Accueil",
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
             "entities": {
-                "main": "Entités",
-                "cotiz": "Cotiz",
-                "engagement": "Engagement",
+                "main": "Services",
+                "cotiz": "Cotisations",
+                "engagement": "Engagements",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
@@ -130,5 +130,5 @@
         "emailexists": "Email déjà utilisé !",
         "idexists": "Une nouvelle entité {{entityName}} ne peut pas avoir d'ID !"
     },
-    "footer": "Ceci est votre pied de page"
+    "footer": "Ndoumri Mutuelle 2018"
 }

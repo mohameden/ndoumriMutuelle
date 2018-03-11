@@ -3,16 +3,15 @@ package mr.ndoumri.mutuelle.service.dto;
 
 import java.time.Instant;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
 
 /**
  * A DTO for the Engagement entity.
  */
 public class EngagementDTO implements Serializable {
+	private static final long serialVersionUID = -176295518537841681L;
 
-    private Long id;
+	private Long id;
 
     private String name;
 
@@ -25,6 +24,8 @@ public class EngagementDTO implements Serializable {
     private String comment;
 
     private Long ownerId;
+    
+    private String ownerLogin;
 
     public Long getId() {
         return id;
@@ -82,7 +83,15 @@ public class EngagementDTO implements Serializable {
         this.ownerId = userId;
     }
 
-    @Override
+    public String getOwnerLogin() {
+		return ownerLogin;
+	}
+
+	public void setOwnerLogin(String ownerLogin) {
+		this.ownerLogin = ownerLogin;
+	}
+
+	@Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;

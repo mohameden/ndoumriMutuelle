@@ -1,10 +1,17 @@
 package mr.ndoumri.mutuelle.service.impl;
 
 import mr.ndoumri.mutuelle.service.CotizService;
+import mr.ndoumri.mutuelle.service.UserService;
 import mr.ndoumri.mutuelle.domain.Cotiz;
 import mr.ndoumri.mutuelle.repository.CotizRepository;
+import mr.ndoumri.mutuelle.security.AuthoritiesConstants;
+import mr.ndoumri.mutuelle.security.SecurityUtils;
 import mr.ndoumri.mutuelle.service.dto.CotizDTO;
 import mr.ndoumri.mutuelle.service.mapper.CotizMapper;
+
+import java.time.Instant;
+
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -25,13 +32,16 @@ public class CotizServiceImpl implements CotizService {
     private final CotizRepository cotizRepository;
 
     private final CotizMapper cotizMapper;
+    
+    private final UserService userService;
 
-    public CotizServiceImpl(CotizRepository cotizRepository, CotizMapper cotizMapper) {
-        this.cotizRepository = cotizRepository;
-        this.cotizMapper = cotizMapper;
-    }
+    public CotizServiceImpl(CotizRepository cotizRepository, CotizMapper cotizMapper, UserService userService) {
+		this.cotizRepository = cotizRepository;
+		this.cotizMapper = cotizMapper;
+		this.userService = userService;
+	}
 
-    /**
+	/**
      * Save a cotiz.
      *
      * @param cotizDTO the entity to save
@@ -41,6 +51,12 @@ public class CotizServiceImpl implements CotizService {
     public CotizDTO save(CotizDTO cotizDTO) {
         log.debug("Request to save Cotiz : {}", cotizDTO);
         Cotiz cotiz = cotizMapper.toEntity(cotizDTO);
+        if(cotiz.getUser()==null)
+        	cotiz.setUser(userService.getUserWithAuthorities().get());
+        if(cotiz.getPaymentDate()==null)
+        	cotiz.setPaymentDate(Instant.now());
+        if(StringUtils.isEmpty(cotiz.getCurrency()))
+        	cotiz.setCurrency("MRU");
         cotiz = cotizRepository.save(cotiz);
         return cotizMapper.toDto(cotiz);
     }
@@ -55,8 +71,12 @@ public class CotizServiceImpl implements CotizService {
     @Transactional(readOnly = true)
     public Page<CotizDTO> findAll(Pageable pageable) {
         log.debug("Request to get all Cotizs");
-        return cotizRepository.findAll(pageable)
-            .map(cotizMapper::toDto);
+        if(SecurityUtils.isCurrentUserInRole(AuthoritiesConstants.ADMIN))
+        	return cotizRepository.findAll(pageable)
+        			.map(cotizMapper::toDto);
+        String login = SecurityUtils.getCurrentUserLogin().get();
+        return cotizRepository.findByUserLogin(login, pageable)
+        		.map(cotizMapper::toDto);
     }
 
     /**

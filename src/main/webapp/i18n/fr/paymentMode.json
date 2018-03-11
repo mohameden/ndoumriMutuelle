@@ -2,8 +2,8 @@
     "ndoumriMutuelleApp": {
         "PaymentMode" : {
             "null": "",
-            "CASH": "CASH",
-            "OTHER": "OTHER"
+            "CASH": "Cash",
+            "OTHER": "Autre"
         }
     }
 }
