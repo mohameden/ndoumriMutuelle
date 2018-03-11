@@ -1,0 +1,46 @@
+
+<div *ngIf="engagement">
+    <h2><span jhiTranslate="ndoumriMutuelleApp.engagement.detail.title">Engagement</span> {{engagement.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="ndoumriMutuelleApp.engagement.name">Name</span></dt>
+        <dd>
+            <span>{{engagement.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="ndoumriMutuelleApp.engagement.expectedAmount">Expected Amount</span></dt>
+        <dd>
+            <span>{{engagement.expectedAmount}}</span>
+        </dd>
+        <dt><span jhiTranslate="ndoumriMutuelleApp.engagement.startDate">Start Date</span></dt>
+        <dd>
+            <span>{{engagement.startDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="ndoumriMutuelleApp.engagement.endDate">End Date</span></dt>
+        <dd>
+            <span>{{engagement.endDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="ndoumriMutuelleApp.engagement.comment">Comment</span></dt>
+        <dd>
+            <span>{{engagement.comment}}</span>
+        </dd>
+        <dt><span jhiTranslate="ndoumriMutuelleApp.engagement.owner">Owner</span></dt>
+        <dd>
+            {{engagement.ownerId}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'engagement/'+ engagement.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>
