@@ -16,35 +16,31 @@
         <table class="table table-striped">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
-            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th *jhiHasAnyAuthority="'ROLE_ADMIN'" jhiSortBy="userLogin"><span jhiTranslate="ndoumriMutuelleApp.cotiz.user">User</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="paymentDate"><span jhiTranslate="ndoumriMutuelleApp.cotiz.paymentDate">Payment Date</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="amount"><span jhiTranslate="ndoumriMutuelleApp.cotiz.amount">Amount</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="currency"><span jhiTranslate="ndoumriMutuelleApp.cotiz.currency">Currency</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="paymentDate"><span jhiTranslate="ndoumriMutuelleApp.cotiz.paymentDate">Payment Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="engagementName"><span jhiTranslate="ndoumriMutuelleApp.cotiz.engagement">Engagement</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="dueDate"><span jhiTranslate="ndoumriMutuelleApp.cotiz.dueDate">Due Date</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="paymentMode"><span jhiTranslate="ndoumriMutuelleApp.cotiz.paymentMode">Payment Mode</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="comment"><span jhiTranslate="ndoumriMutuelleApp.cotiz.comment">Comment</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="userId"><span jhiTranslate="ndoumriMutuelleApp.cotiz.user">User</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="engagementId"><span jhiTranslate="ndoumriMutuelleApp.cotiz.engagement">Engagement</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let cotiz of cotizs ;trackBy: trackId">
-                <td><a [routerLink]="['../cotiz', cotiz.id ]">{{cotiz.id}}</a></td>
+                <td>{{cotiz.userLogin}}</td>
+                <td><a [routerLink]="['../cotiz', cotiz.id ]">{{cotiz.paymentDate | date:'medium'}}</a></td>
                 <td>{{cotiz.amount}}</td>
                 <td>{{cotiz.currency}}</td>
-                <td>{{cotiz.paymentDate | date:'medium'}}</td>
+                <td>
+                    <div *ngIf="cotiz.engagementId">
+                        <a [routerLink]="['../engagement', cotiz.engagementId  ]" >{{cotiz.engagementName}}</a>
+                    </div>
+                </td>
                 <td>{{cotiz.dueDate | date:'medium'}}</td>
                 <td jhiTranslate="{{'ndoumriMutuelleApp.PaymentMode.' + cotiz.paymentMode}}">{{cotiz.paymentMode}}</td>
                 <td>{{cotiz.comment}}</td>
-                <td>
-                    {{cotiz.userId}}
-                </td>
-                <td>
-                    <div *ngIf="cotiz.engagementId">
-                        <a [routerLink]="['../engagement', cotiz.engagementId  ]" >{{cotiz.engagementId}}</a>
-                    </div>
-                </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

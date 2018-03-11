@@ -18,9 +18,13 @@
                 [(ngModel)]="cotiz.amount" />
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="ndoumriMutuelleApp.cotiz.currency" for="field_currency">Currency</label>
-            <input type="text" class="form-control" name="currency" id="field_currency"
-                [(ngModel)]="cotiz.currency" />
+            <label class="form-control-label" jhiTranslate="ndoumriMutuelleApp.cotiz.currency" for="field_currency">Devise</label>
+            <select class="form-control" name="currency" [(ngModel)]="cotiz.currency" id="field_currency" value="MRU">
+                <option value="MRU">MRU</option>
+                <option value="MRO">MRO</option>
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+            </select>
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="ndoumriMutuelleApp.cotiz.paymentDate" for="field_paymentDate">Payment Date</label>
@@ -29,39 +33,36 @@
                 />
             </div>
         </div>
-        <div class="form-group">
+        <div class="form-group" [hidden]="!cotiz.id">
             <label class="form-control-label" jhiTranslate="ndoumriMutuelleApp.cotiz.dueDate" for="field_dueDate">Due Date</label>
             <div class="d-flex">
                 <input id="field_dueDate" type="datetime-local" class="form-control" name="dueDate" [(ngModel)]="cotiz.dueDate"
                 />
             </div>
         </div>
-        <div class="form-group">
+        <div class="form-group" [hidden]="!cotiz.id">
             <label class="form-control-label" jhiTranslate="ndoumriMutuelleApp.cotiz.paymentMode" for="field_paymentMode">Payment Mode</label>
-            <select class="form-control" name="paymentMode" [(ngModel)]="cotiz.paymentMode" id="field_paymentMode" >
+            <select class="form-control" name="paymentMode" [(ngModel)]="cotiz.paymentMode" id="field_paymentMode" value="CASH">
                 <option value="CASH">{{'ndoumriMutuelleApp.PaymentMode.CASH' | translate}}</option>
                 <option value="OTHER">{{'ndoumriMutuelleApp.PaymentMode.OTHER' | translate}}</option>
+            </select>
+        </div>
+        <div class="form-group" *jhiHasAnyAuthority="'ROLE_ADMIN'">
+            <label class="form-control-label" jhiTranslate="ndoumriMutuelleApp.cotiz.user" for="field_user">User</label>
+            <select class="form-control" id="field_user" name="user" [(ngModel)]="cotiz.userId" >
+                <option [ngValue]="userOption.id" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.login}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ndoumriMutuelleApp.cotiz.engagement" for="field_engagement">Engagement</label>
+            <select class="form-control" id="field_engagement" name="engagement" [(ngModel)]="cotiz.engagementId" >
+                <option [ngValue]="engagementOption.id" *ngFor="let engagementOption of engagements; trackBy: trackEngagementById">{{engagementOption.name}}</option>
             </select>
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="ndoumriMutuelleApp.cotiz.comment" for="field_comment">Comment</label>
             <input type="text" class="form-control" name="comment" id="field_comment"
                 [(ngModel)]="cotiz.comment" />
-        </div>
-
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="ndoumriMutuelleApp.cotiz.user" for="field_user">User</label>
-            <select class="form-control" id="field_user" name="user" [(ngModel)]="cotiz.userId" >
-                <option [ngValue]="null"></option>
-                <option [ngValue]="userOption.id" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.id}}</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="ndoumriMutuelleApp.cotiz.engagement" for="field_engagement">Engagement</label>
-            <select class="form-control" id="field_engagement" name="engagement" [(ngModel)]="cotiz.engagementId" >
-                <option [ngValue]="null"></option>
-                <option [ngValue]="engagementOption.id" *ngFor="let engagementOption of engagements; trackBy: trackEngagementById">{{engagementOption.id}}</option>
-            </select>
         </div>
     </div>
     <div class="modal-footer">

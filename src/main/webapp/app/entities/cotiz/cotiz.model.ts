@@ -16,6 +16,8 @@ export class Cotiz implements BaseEntity {
         public comment?: string,
         public userId?: number,
         public engagementId?: number,
+        public userLogin?: string,
+        public engagementName?: string,
     ) {
     }
 }

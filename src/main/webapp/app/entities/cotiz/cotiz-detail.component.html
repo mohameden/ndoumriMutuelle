@@ -30,12 +30,12 @@
         </dd>
         <dt><span jhiTranslate="ndoumriMutuelleApp.cotiz.user">User</span></dt>
         <dd>
-            {{cotiz.userId}}
+            {{cotiz.userLogin}}
         </dd>
         <dt><span jhiTranslate="ndoumriMutuelleApp.cotiz.engagement">Engagement</span></dt>
         <dd>
             <div *ngIf="cotiz.engagementId">
-                <a [routerLink]="['/engagement', cotiz.engagementId]">{{cotiz.engagementId}}</a>
+                <a [routerLink]="['/engagement', cotiz.engagementId]">{{cotiz.engagementName}}</a>
             </div>
         </dd>
     </dl>

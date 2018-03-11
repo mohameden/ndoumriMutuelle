@@ -16,7 +16,6 @@
         <table class="table table-striped">
             <thead>
             <tr>
-            <th><span jhiTranslate="global.field.id">ID</span></th>
             <th><span jhiTranslate="ndoumriMutuelleApp.engagement.name">Name</span></th>
             <th><span jhiTranslate="ndoumriMutuelleApp.engagement.expectedAmount">Expected Amount</span></th>
             <th><span jhiTranslate="ndoumriMutuelleApp.engagement.startDate">Start Date</span></th>
@@ -28,14 +27,13 @@
             </thead>
             <tbody>
             <tr *ngFor="let engagement of engagements ;trackBy: trackId">
-                <td><a [routerLink]="['../engagement', engagement.id ]">{{engagement.id}}</a></td>
-                <td>{{engagement.name}}</td>
+                <td><a [routerLink]="['../engagement', engagement.id ]">{{engagement.name}}</a></td>
                 <td>{{engagement.expectedAmount}}</td>
                 <td>{{engagement.startDate | date:'medium'}}</td>
                 <td>{{engagement.endDate | date:'medium'}}</td>
                 <td>{{engagement.comment}}</td>
                 <td>
-                    {{engagement.ownerId}}
+                    {{engagement.ownerLogin}}
                 </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">

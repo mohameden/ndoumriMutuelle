@@ -10,6 +10,7 @@ export class Engagement implements BaseEntity {
         public comment?: string,
         public cotizs?: BaseEntity[],
         public ownerId?: number,
+        public ownerLogin?: string,
     ) {
     }
 }
